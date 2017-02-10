@@ -31,14 +31,29 @@ while True:
 	while True:
 		messageReceived = c.recv(1024)
 		messageReceived = messageReceived.rstrip()
+		#if the client ends the chat
 		if messageReceived == "quit":
-			print "The client has ended the chat. Have a nice day"
-			quit()
+			print "The client has ended the chat. Have a nice day\n"
+			print "Waiting for a new connection"
+			s.listen(5)                 # Now wait for client connection.
+			c, addr = s.accept()     # Establish connection with client.
+			print 'Got connection from', addr
+			c.send('Thank you for connecting')
+
+			userName = c.recv(1024)
+			userName = userName.rstrip()
+			print "hello ", userName
+			message = raw_input('server send first message> ')
+			c.send(message)
+			messageReceived = c.recv(1024)
+			messageReceived = messageReceived.rstrip()
+			print userName, "> ", messageReceived
+			
 		else:
 			print userName, "> ", messageReceived
 
 		message = raw_input("server> ")
-		print message
+		#if server wants to end chat
 		if message == '\quit':
 			print "Thank you for chatting today"
 			c.send("quit")
