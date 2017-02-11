@@ -98,12 +98,13 @@ int main(int argc, char *argv[])
         /* check if client wants to end session */
         if(strcmp(message, "\\quit\n") == 0 ){
             write(sockfd,"quit",strlen("quit"));
-            /*send message to server telling it to listen*/
+        	bzero(message,501);    
+	/*send message to server telling it to listen*/
             close(sockfd);
             printf("To open a new chat type anything");
             bzero(buffer,501);
-            fgets(buffer,10,stdin);
-
+            fgets(buffer,501,stdin);
+		bzero(buffer,501);
             //reconnect back to server           
             sockfd = socket(AF_INET, SOCK_STREAM, 0);
             if (sockfd < 0) 
@@ -131,11 +132,11 @@ int main(int argc, char *argv[])
             bzero(buffer,501);
 
             /* Get user handle*/
-            /*FIX AND UNCOMMENT*?
-            // printf("Client> Please enter your user handle: ");
-            // bzero(handle,501);
-            // fgets(handle,10,stdin);
-            // handle[strcspn(handle, "\n")] = 0;
+           
+            printf("Client> Please enter your user handle: ");
+            bzero(handle,10);
+            fgets(handle,10,stdin);
+            handle[strcspn(handle, "\n")] = 0;
 
 
             /*send username to server */
