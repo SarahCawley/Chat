@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
     bzero(buffer,501);
 
 
-    n = write(sockfd,"Connected to client",strlen("Connected to client\n"));
+    //n = write(sockfd,"Connected to client",strlen("Connected to client\n"));
     /* Get user handle*/
     // bzero(handle,501);
     // printf("Client> Please enter your user handle: ");
@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
 
 
     /*send username to server */
-    n = write(sockfd, "Sarah",strlen("Sarah"));
+    n = write(sockfd, handle,strlen(handle));
     if (n < 0) 
         error("ERROR writing to socket");
     
