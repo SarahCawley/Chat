@@ -15,13 +15,14 @@ void error(const char *msg)
 
 int main(int argc, char *argv[])
 {
-    char handle[10];
+    //char handle[10];
     char message[500];
     //char server = "localhost";
     // char quit = "quit";
     int sockfd, portno, n;
     struct sockaddr_in serv_addr;
     struct hostent *server;
+    char handle[] = "Sarah";
 
     char buffer[500];
     if (argc < 3) {
@@ -33,7 +34,7 @@ int main(int argc, char *argv[])
     if (sockfd < 0) 
         error("ERROR opening socket");
     server = gethostbyname(argv[1]);
-    printf("the server is: %s", server->h_name);
+    printf("the server is: %s\n", server->h_name);
     if (server == NULL) {
         fprintf(stderr,"ERROR, no such host\n");
         exit(0);
@@ -56,16 +57,17 @@ int main(int argc, char *argv[])
     bzero(buffer,501);
 
 
-    n = write(sockfd,"Connected to client",strlen("Connected to client"));
+    n = write(sockfd,"Connected to client",strlen("Connected to client\n"));
     /* Get user handle*/
-    printf("Client> Please enter your user handle: ");
-    bzero(handle,501);
-    fgets(handle,10,stdin);
-    handle[strcspn(handle, "\n")] = 0;
+    // bzero(handle,501);
+    // printf("Client> Please enter your user handle: ");
+    
+    // fgets(handle,10,stdin);
+    // handle[strcspn(handle, "\n")] = 0;
 
 
     /*send username to server */
-    n = write(sockfd,handle,strlen(handle));
+    n = write(sockfd, "Sarah",strlen("Sarah"));
     if (n < 0) 
         error("ERROR writing to socket");
     
@@ -127,10 +129,11 @@ int main(int argc, char *argv[])
             bzero(buffer,501);
 
             /* Get user handle*/
-            printf("Client> Please enter your user handle: ");
-            bzero(handle,501);
-            fgets(handle,10,stdin);
-            handle[strcspn(handle, "\n")] = 0;
+            /*FIX AND UNCOMMENT*?
+            // printf("Client> Please enter your user handle: ");
+            // bzero(handle,501);
+            // fgets(handle,10,stdin);
+            // handle[strcspn(handle, "\n")] = 0;
 
 
             /*send username to server */
