@@ -17,6 +17,7 @@ int main(int argc, char *argv[])
 {
     char handle[10];
     char message[500];
+    //char server = "localhost";
     // char quit = "quit";
     int sockfd, portno, n;
     struct sockaddr_in serv_addr;
@@ -32,6 +33,7 @@ int main(int argc, char *argv[])
     if (sockfd < 0) 
         error("ERROR opening socket");
     server = gethostbyname(argv[1]);
+    printf("the server is: %s", server->h_name);
     if (server == NULL) {
         fprintf(stderr,"ERROR, no such host\n");
         exit(0);
@@ -53,6 +55,8 @@ int main(int argc, char *argv[])
     printf("server> %s\n",buffer);
     bzero(buffer,501);
 
+
+    n = write(sockfd,"Connected to client",strlen("Connected to client"));
     /* Get user handle*/
     printf("Client> Please enter your user handle: ");
     bzero(handle,501);
