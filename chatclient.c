@@ -15,7 +15,7 @@ void error(const char *msg)
 
 int main(int argc, char *argv[])
 {
-   char handle[10];
+    char handle[10];
     char message[500];
     //char server = "localhost";
     // char quit = "quit";
@@ -60,10 +60,10 @@ int main(int argc, char *argv[])
     //n = write(sockfd,"Connected to client",strlen("Connected to client\n"));
     /* Get user handle*/
     bzero(handle,10);
-   printf("Client> Please enter your user handle: ");
-    
-   fgets(handle,10,stdin);
-   handle[strcspn(handle, "\n")] = 0; 
+    printf("Client> Please enter your user handle: ");
+
+    fgets(handle,10,stdin);
+    handle[strcspn(handle, "\n")] = 0; 
     //bzero(handle,501);
 
 
@@ -99,12 +99,12 @@ int main(int argc, char *argv[])
         if(strcmp(message, "\\quit\n") == 0 ){
             write(sockfd,"quit",strlen("quit"));
         	bzero(message,501);    
-	/*send message to server telling it to listen*/
+            /*send message to server telling it to listen*/
             close(sockfd);
             printf("To open a new chat type anything");
             bzero(buffer,501);
             fgets(buffer,501,stdin);
-		bzero(buffer,501);
+            bzero(buffer,501);
             //reconnect back to server           
             sockfd = socket(AF_INET, SOCK_STREAM, 0);
             if (sockfd < 0) 
