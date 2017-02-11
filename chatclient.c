@@ -59,10 +59,10 @@ int main(int argc, char *argv[])
 
     //n = write(sockfd,"Connected to client",strlen("Connected to client\n"));
     /* Get user handle*/
-    // bzero(handle,501);
-    // printf("Client> Please enter your user handle: ");
+    bzero(handle,501);
+    printf("Client> Please enter your user handle: ");
     
-    // fgets(handle,10,stdin);
+    fgets(handle,10,stdin);
     
     //bzero(handle,501);
 
