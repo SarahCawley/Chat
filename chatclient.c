@@ -15,14 +15,14 @@ void error(const char *msg)
 
 int main(int argc, char *argv[])
 {
-    //char handle[10];
+    char handle[10];
     char message[500];
     //char server = "localhost";
     // char quit = "quit";
     int sockfd, portno, n;
     struct sockaddr_in serv_addr;
     struct hostent *server;
-    char handle[] = "Sarah";
+    // char handle[] = "Sarah";
 
     char buffer[500];
     if (argc < 3) {
@@ -59,15 +59,17 @@ int main(int argc, char *argv[])
 
     //n = write(sockfd,"Connected to client",strlen("Connected to client\n"));
     /* Get user handle*/
-    // bzero(handle,501);
-    // printf("Client> Please enter your user handle: ");
+    bzero(handle,501);
+    printf("Client> Please enter your user handle: ");
     
-    // fgets(handle,10,stdin);
-    // handle[strcspn(handle, "\n")] = 0;
+    fgets(handle,10,stdin);
+    
+    //bzero(handle,501);
 
 
     /*send username to server */
     n = write(sockfd, handle,strlen(handle));
+    handle[strcspn(handle, "\n")] = 0;
     if (n < 0) 
         error("ERROR writing to socket");
     
