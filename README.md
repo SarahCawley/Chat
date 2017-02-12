@@ -5,9 +5,8 @@ Compile the client:
 	1) run `make`
 
 Start the server:
-	1) In one terminal run `python chatserve.py`. 
+	1) In one terminal run `python chatserve.py [portNumber]`. 
 	2) The script witll print out the hostname of the machine you are currently on. 
-	3) Please choose which port you would like to chat on.
 
 Start the client:
 	1) In a second terminal run `./chatclient [hostname] [port]`
@@ -16,8 +15,8 @@ Start the client:
 Order of messages:
 	1) The server will send a "Thank you for connecting" message to the client
 	2) The client should enter their username
-	3) The server writes the first message
-	4) Messages must be sent in order starting with the server, then client, server, etc.
+	3) The clent writes the first message
+	4) Messages must be sent in order starting with the clent, then server, client, etc.
 
 To exit the chat:
 	Either the client or the server can end the chat by entering `\quit`
